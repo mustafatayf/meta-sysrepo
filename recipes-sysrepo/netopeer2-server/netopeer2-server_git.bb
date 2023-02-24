@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=41daedff0b24958b2eba4f9086d782e1"
 SRC_URI = "git://github.com/TeraMicro/Netopeer2.git;protocol=https;branch=devel file://netopeer2-server"
 
 PV = "2.1.38+git${SRCPV}"
-SRCREV = "3007b6f4c3052e4ba39f1956a6eab49388a3cc9b"
+SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
