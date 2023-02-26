@@ -3,10 +3,10 @@ DESCRIPTION = "Netopeer2 is based on the new generation of the NETCONF and YANG 
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=41daedff0b24958b2eba4f9086d782e1"
 
-SRC_URI = "git://github.com/TeraMicro/Netopeer2.git;protocol=https;branch=devel file://netopeer2-server"
+SRC_URI = "git://github.com/CESNET/Netopeer2.git;protocol=https;branch=devel file://netopeer2-server"
 
 PV = "2.1.38+git${SRCPV}"
-SRCREV = "${AUTOREV}"
+SRCREV = "3007b6f4c3052e4ba39f1956a6eab49388a3cc9b"
 
 S = "${WORKDIR}/git"
 
