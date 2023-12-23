@@ -3,18 +3,19 @@ DESCRIPTION = "libzip is a C library for reading, creating, and modifying zip ar
 HOMEPAGE = "https://libzip.org/"
 SECTION = "libs"
 LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=e33bb117aa55f9aad3d28e29256f9919"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=d8a9d2078f35e61cf1122ccd440687cf"
 
-DEPENDS = "zlib bzip2"
+SRC_URI = "git://github.com/nih-at/libzip.git;protocol=https;branch=main"
 
-PACKAGECONFIG[ssl] = "-DENABLE_OPENSSL=ON,-DENABLE_OPENSSL=OFF,openssl"
-PACKAGECONFIG[lzma] = "-DENABLE_LZMA=ON,-DENABLE_LZMA=OFF,xz"
+SRCREV = "${AUTOREV}"
+PV = "+git${SRCPV}"
 
-PACKAGECONFIG ?= "ssl lzma"
+S = "${WORKDIR}/git"
+
+DEPENDS = "zlib bzip2 xz"
 
 inherit cmake
 
-SRC_URI = "https://libzip.org/download/libzip-${PV}.tar.xz"
+PACKAGECONFIG[lzma] = "-DENABLE_LZMA=ON,-DENABLE_LZMA=OFF,xz"
 
-SRC_URI[md5sum] = "f9a228619aab2446addc9c9e0e2de149"
-SRC_URI[sha256sum] = "705dac7a671b3f440181481e607b0908129a9cf1ddfcba75d66436c0e7d33641"
+PACKAGECONFIG ?= "lzma"
