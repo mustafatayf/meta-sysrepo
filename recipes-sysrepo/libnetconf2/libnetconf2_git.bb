@@ -11,7 +11,7 @@ PV = "+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libssh openssl libyang libxcrypt libpam"
+DEPENDS = "libssh openssl libyang libxcrypt libpam curl clang gcc"
 
 inherit cmake pkgconfig
 
