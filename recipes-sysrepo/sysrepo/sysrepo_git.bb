@@ -27,7 +27,7 @@ do_install:append () {
     install -d ${D}/etc/sysrepo/yang
     install -o root -g root ${S}/modules/ietf-netconf-notifications.yang ${D}/etc/sysrepo/yang/ietf-netconf-notifications@2012-02-06.yang
     install -o root -g root ${S}/modules/ietf-netconf-with-defaults.yang ${D}/etc/sysrepo/yang/ietf-netconf-with-defaults@2011-06-01.yang
-    install -o root -g root ${S}/modules/ietf-netconf.yang ${D}/etc/sysrepo/yang/ietf-netconf@2011-06-01.yang
+    install -o root -g root ${S}/modules/ietf-netconf.yang ${D}/etc/sysrepo/yang/ietf-netconf@2013-09-29.yang
     install -d ${D}/etc/init.d
     install -m 0775 ${WORKDIR}/sysrepo ${D}/etc/init.d/
     install -d ${D}/usr/lib/sysrepo/plugins
