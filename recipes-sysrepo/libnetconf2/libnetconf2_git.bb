@@ -11,7 +11,9 @@ PV = "+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
+
 DEPENDS = "libssh openssl libyang libxcrypt libpam curl"
+
 
 FILES:${PN} += "/usr/share/yang/* /usr/lib/*"
 
@@ -22,5 +24,3 @@ inherit cmake pkgconfig clang
 EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release "
 
 BBCLASSEXTEND = "native nativesdk"
-
-

@@ -11,6 +11,7 @@ PV = "+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 DEPENDS = "libyang libnetconf2 sysrepo"
+
 RDEPENDS:${PN} += "bash curl"
 
 FILES:${PN} += "/usr/share/yang* /usr/share/netopeer2/* /usr/lib/sysrepo-plugind/*"
