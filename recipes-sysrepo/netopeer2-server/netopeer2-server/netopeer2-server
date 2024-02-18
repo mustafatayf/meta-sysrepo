@@ -16,6 +16,7 @@ case "$1" in
     stop)
 	killall -9 sysrepo-plugind
         start-stop-daemon --stop --quiet --exec $EXEC_PATH/$SERVER_EXEC
+        /etc/init.d/sysrepo stop
 	rm -rf /dev/shm/sr*
         ;;
     status)

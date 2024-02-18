@@ -12,15 +12,14 @@ PV = "+git${SRCPV}"
 S = "${WORKDIR}/git"
 
 
-DEPENDS = "libssh openssl libyang libxcrypt libpam curl"
+DEPENDS = "libssh openssl libyang curl libgcrypt"
 
+FILES:${PN} += " /usr/share/yang/modules/libnetconf2/* "
 
-FILES:${PN} += "/usr/share/yang/* /usr/lib/*"
-
-inherit cmake pkgconfig clang
+inherit cmake pkgconfig
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-#EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release -DLIBYANG_INCLUDE_DIR=/usr/include -DLIBYANG_LIBRARY=/usr/lib "
-EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release "
+# EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release "
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE:String=Release "
 
 BBCLASSEXTEND = "native nativesdk"

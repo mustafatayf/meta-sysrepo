@@ -11,30 +11,22 @@ PV = "+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libyang protobuf protobuf-c protobuf-c-native libev tar"
+DEPENDS = "libyang libev tar"
 
-FILES:${PN} += "/usr/share/yang/* /usr/lib/sysrepo-plugind/*"
+FILES:${PN} += " /usr/share/yang/modules/sysrepo/* /usr/lib/sysrepo-plugind/* "
 
-inherit cmake pkgconfig systemd python3native python3-dir
+inherit clang cmake pkgconfig systemd
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release -DBUILD_EXAMPLES:String=False -DENABLE_TESTS:String=False -DREPOSITORY_LOC:PATH=/etc/sysrepo  -DCALL_TARGET_BINS_DIRECTLY=False -DGEN_LANGUAGE_BINDINGS:String=False "
+# EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release -DBUILD_EXAMPLES:String=False -DENABLE_TESTS:String=False -DREPOSITORY_LOC:PATH=/srv/sysrepo  -DCALL_TARGET_BINS_DIRECTLY=False -DGEN_LANGUAGE_BINDINGS:String=False "
+
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE:String=Release -DSYSREPO_GROUP=sysrepo -DSYSTEMD_UNIT_DIR=/usr/lib/systemd/system -DNACM_RECOVERY_USER=root "
+
 
 BBCLASSEXTEND = "native nativesdk" 
 
 do_install:append () {
-    install -d ${D}/etc/sysrepo/data/notifications
-    install -d ${D}/etc/sysrepo/yang
-
-    install -o root -g root ${S}/modules/ietf-netconf-notifications@2012-02-06.yang ${D}/etc/sysrepo/yang/ietf-netconf-notifications@2012-02-06.yang
-    install -o root -g root ${S}/modules/ietf-netconf-with-defaults@2011-06-01.yang ${D}/etc/sysrepo/yang/ietf-netconf-with-defaults@2011-06-01.yang
-    install -o root -g root ${S}/modules/ietf-netconf@2013-09-29.yang ${D}/etc/sysrepo/yang/ietf-netconf@2013-09-29.yang
-
     install -d ${D}/etc/init.d
     install -m 0775 ${WORKDIR}/sysrepo ${D}/etc/init.d/
-    install -d ${D}/usr/lib/sysrepo/plugins
-    install -m 0755 ${B}/sysrepoctl ${D}${bindir}
-    install -m 0755 ${B}/sysrepocfg ${D}${bindir}
-    install -m 0755 ${B}/sysrepo-plugind ${D}${bindir}
 }
 

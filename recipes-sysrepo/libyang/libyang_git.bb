@@ -13,11 +13,12 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "libpcre2"
 
-FILES:${PN} += "/usr/share/yang/modules/libyang/*"
+FILES:${PN} += " /usr/share/yang/* "
 
 inherit cmake pkgconfig
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release "
+# EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release "
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE:String=Release "
 
 BBCLASSEXTEND = "native nativesdk"
