@@ -11,17 +11,14 @@ PV = "+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libyang libev tar"
+DEPENDS = "libyang tar"
 
 FILES:${PN} += " /usr/share/yang/modules/sysrepo/* /usr/lib/sysrepo-plugind/* "
 
 inherit cmake pkgconfig systemd
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-# EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release -DBUILD_EXAMPLES:String=False -DENABLE_TESTS:String=False -DREPOSITORY_LOC:PATH=/srv/sysrepo  -DCALL_TARGET_BINS_DIRECTLY=False -DGEN_LANGUAGE_BINDINGS:String=False "
-
-#EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE:String=Release -DSYSREPO_GROUP=sysrepo -DSYSTEMD_UNIT_DIR=/usr/lib/systemd/system -DNACM_RECOVERY_USER=root "
-EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE:String=Release "
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DSYSREPO_UMASK=007 -DSYSREPO_GROUP=sysrepo -DNACM_SRMON_DATA_PERM=660 "
 
 BBCLASSEXTEND = "native nativesdk" 
 

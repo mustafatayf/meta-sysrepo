@@ -10,7 +10,7 @@ PV = "+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libyang libnetconf2 sysrepo openssl"
+DEPENDS = "libyang libnetconf2 sysrepo"
 
 RDEPENDS:${PN} += "bash curl"
 
@@ -19,10 +19,7 @@ FILES:${PN} += " /usr/share/yang/modules/netopeer2/* /usr/share/netopeer2/* "
 inherit cmake pkgconfig systemd 
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-# EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE:String=Release -DINSTALL_MODULES=OFF -DGENERATE_HOSTKEY=OFF -DMERGE_LISTEN_CONFIG=OFF -DSYSREPOCTL_EXECUTABLE=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE=/usr/bin/sysrepocfg"
-# -DNP2_MODULE_PERMS=644 -DNP2_MODULE_OWNER=root -DNP2_MODULE_GROUP=root
-
-EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE:String=Release -DSYSREPOCTL_EXECUTABLE=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE=/usr/bin/sysrepocfg "
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DSYSREPO_SETUP=OFF -DPIDFILE_PREFIX=/run  -DSERVER_DIR=%{_libdir}/netopeer2-server "
 
 do_install:append () {
     install -d ${D}/etc/netopeer2/scripts
@@ -33,4 +30,4 @@ do_install:append () {
     install -d ${D}/etc/init.d
     install -m 0755 ${WORKDIR}/netopeer2-server ${D}/etc/init.d/
 }
-
+      
