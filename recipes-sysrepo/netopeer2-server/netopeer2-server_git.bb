@@ -21,9 +21,15 @@ inherit cmake pkgconfig systemd
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
 # EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE:String=Release -DINSTALL_MODULES=OFF -DGENERATE_HOSTKEY=OFF -DMERGE_LISTEN_CONFIG=OFF -DSYSREPOCTL_EXECUTABLE=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE=/usr/bin/sysrepocfg"
 # -DNP2_MODULE_PERMS=644 -DNP2_MODULE_OWNER=root -DNP2_MODULE_GROUP=root
-EXTRA_OECMAKE = " -DSYSREPO_SETUP=OFF -DCMAKE_BUILD_TYPE:String=Release -DSYSREPOCTL_EXECUTABLE=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE=/usr/bin/sysrepocfg "
+
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE:String=Release -DSYSREPOCTL_EXECUTABLE=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE=/usr/bin/sysrepocfg "
 
 do_install:append () {
+    install -d ${D}/etc/netopeer2/scripts
+    install -o root -g root ${S}/scripts/setup.sh ${D}/etc/netopeer2/scripts/setup.sh
+    install -o root -g root ${S}/scripts/merge_hostkey.sh ${D}/etc/netopeer2/scripts/merge_hostkey.sh
+    install -o root -g root ${S}/scripts/merge_config.sh ${D}/etc/netopeer2/scripts/merge_config.sh
+    install -d ${D}/etc/netopeer2
     install -d ${D}/etc/init.d
     install -m 0755 ${WORKDIR}/netopeer2-server ${D}/etc/init.d/
 }
