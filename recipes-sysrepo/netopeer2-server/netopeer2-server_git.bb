@@ -19,11 +19,13 @@ FILES:${PN} += " /usr/share/yang/modules/netopeer2/* /usr/share/netopeer2/* "
 inherit cmake pkgconfig systemd 
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DSYSREPO_SETUP=OFF -DPIDFILE_PREFIX=/run  -DSERVER_DIR=%{_libdir}/netopeer2-server "
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DSYSREPO_SETUP=ON -DPIDFILE_PREFIX=/run  -DSERVER_DIR=%{_libdir}/netopeer2-server -DSYSREPOCTL_EXECUTABLE=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE=/usr/bin/sysrepocfg "
 
 do_install:append () {
     install -d ${D}/etc/netopeer2/scripts
+    install -o root -g root ${S}/scripts/setup.sh ${D}/etc/netopeer2/scripts/common.sh
     install -o root -g root ${S}/scripts/setup.sh ${D}/etc/netopeer2/scripts/setup.sh
+    install -o root -g root ${S}/scripts/setup.sh ${D}/etc/netopeer2/scripts/remove.sh
     install -o root -g root ${S}/scripts/merge_hostkey.sh ${D}/etc/netopeer2/scripts/merge_hostkey.sh
     install -o root -g root ${S}/scripts/merge_config.sh ${D}/etc/netopeer2/scripts/merge_config.sh
     install -d ${D}/etc/netopeer2
