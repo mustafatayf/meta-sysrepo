@@ -3,7 +3,7 @@ DESCRIPTION = "Netopeer2 is based on the new generation of the NETCONF and YANG 
 LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=41daedff0b24958b2eba4f9086d782e1"
 
-SRC_URI = "git://github.com/CESNET/Netopeer2.git;protocol=https;branch=master file://netopeer2-server"
+SRC_URI = "git://github.com/CESNET/Netopeer2.git;protocol=https;branch=devel file://netopeer2-server"
 
 SRCREV = "${AUTOREV}"
 PV = "+git${SRCPV}"
@@ -19,7 +19,7 @@ FILES:${PN} += " /usr/share/yang/modules/netopeer2/* /usr/share/netopeer2/* "
 inherit cmake pkgconfig systemd 
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DSYSREPO_SETUP=ON -DPIDFILE_PREFIX=/run  -DSERVER_DIR=%{_libdir}/netopeer2-server -DSYSREPOCTL_EXECUTABLE=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE=/usr/bin/sysrepocfg "
+EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DSYSREPO_SETUP=OFF -DPIDFILE_PREFIX=/run  -DSERVER_DIR=%{_libdir}/netopeer2-server "
 
 do_install:append () {
     install -d ${D}/etc/netopeer2/scripts
