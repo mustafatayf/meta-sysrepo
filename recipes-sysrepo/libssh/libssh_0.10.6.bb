@@ -24,12 +24,7 @@ PACKAGECONFIG[tests] = "-DUNIT_TESTING=1, -DUNIT_TESTING=0, cmocka"
 
 ARM_INSTRUCTION_SET:armv5 = "arm"
 
-EXTRA_OECMAKE = " \
-    -DWITH_PCAP=1 \
-    -DWITH_SFTP=1 \
-    -DWITH_ZLIB=1 \
-    -DWITH_EXAMPLES=0 \
-    "
+EXTRA_OECMAKE = " -DWITH_GCRYPT=0 -DWITH_PCAP=0 -DWITH_SFTP=1 -DWITH_ZLIB=0 -DLIB_SUFFIX=${@d.getVar('baselib',  True).replace('lib', '')} "
 
 do_compile:prepend () {
     if [ ${PTEST_ENABLED} = "1" ]; then
