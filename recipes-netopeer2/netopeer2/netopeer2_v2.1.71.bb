@@ -4,11 +4,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=41daedff0b24958b2eba4f9086d782e1"
 
 SRC_URI = "git://github.com/CESNET/Netopeer2.git;protocol=https;branch=devel \
-		file://netopeer2-server \
-		file://main.patch \
-		file://modules.patch \
-		file://install-sysrepo.sh \
-		file://users.xml"
+		file://netopeer2-server "
 
 SRCREV = "3f6e921e46a5b78e93df13f60cfc88ea22b96287"
 #PV = "+git${SRCPV}"
@@ -33,12 +29,5 @@ do_install:append () {
     install -d ${D}/etc/netopeer2
     install -d ${D}/etc/init.d
     install -m 0755 ${WORKDIR}/netopeer2-server ${D}/etc/init.d/
-    install -m 0755 ${WORKDIR}/install-sysrepo.sh ${D}/etc/init.d/
-    install -m 0755 ${WORKDIR}/users.xml ${D}/etc/init.d/
 }
 
-#do_patch() {
-#    cd ${S}
-#    patch -p1 < ${WORKDIR}/main.patch
-#    patch -p1 < ${WORKDIR}/modules.patch
-#}
