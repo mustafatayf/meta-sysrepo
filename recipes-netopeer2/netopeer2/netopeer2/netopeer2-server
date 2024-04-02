@@ -5,7 +5,7 @@
 
 EXEC_PATH="/usr/sbin"
 SERVER_EXEC="netopeer2-server"
-SERVER_OPTS=" -d -v3 -U"
+SERVER_OPTS=" -v 1"
 
 
 case "$1" in
@@ -14,10 +14,7 @@ case "$1" in
         start-stop-daemon --start --exec $EXEC_PATH/$SERVER_EXEC -- $SERVER_OPTS
         ;;
     stop)
-	killall -9 sysrepo-plugind
         start-stop-daemon --stop --quiet --exec $EXEC_PATH/$SERVER_EXEC
-        /etc/init.d/sysrepo stop
-	rm -rf /dev/shm/sr*
         ;;
     status)
         status $SERVER_EXEC
