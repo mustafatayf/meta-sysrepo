@@ -11,7 +11,7 @@ SRCREV = "a6f309eb9601b9ef28e95a74655d7e9eac3dcc7a"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libyang libnetconf2"
+DEPENDS = "libyang protobuf protobuf-c protobuf-c-native libredblack libev libnetconf2"
 
 FILES:${PN} += "/usr/share/yang/* /usr/lib/sysrepo-plugind/*"
 

@@ -11,7 +11,7 @@ SRCREV = "1bd72ec706a798b3b3855401cf50d497b4cda76b"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libyang libnetconf2 sysrepo curl"
+DEPENDS = "libyang libnetconf2 sysrepo curl systemd"
 RDEPENDS:${PN} += "bash curl"
 
 FILES:${PN} += "/usr/share/yang* /usr/share/netopeer2/* /usr/lib/sysrepo-plugind/*"
@@ -19,6 +19,7 @@ FILES:${PN} += "/usr/share/yang* /usr/share/netopeer2/* /usr/lib/sysrepo-plugind
 inherit cmake pkgconfig
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
+#EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE:String=Release -DINSTALL_MODULES=OFF -DGENERATE_HOSTKEY=OFF -DMERGE_LISTEN_CONFIG=OFF -DSYSREPO_SETUP=OFF"
 EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE:String=Release -DINSTALL_MODULES=OFF -DGENERATE_HOSTKEY=OFF -DMERGE_LISTEN_CONFIG=OFF"
 
 do_install:append () {
