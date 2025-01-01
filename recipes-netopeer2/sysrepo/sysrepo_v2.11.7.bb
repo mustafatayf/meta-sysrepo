@@ -18,15 +18,14 @@ FILES:${PN} += "/usr/share/yang/* /usr/lib/sysrepo-plugind/*"
 inherit cmake pkgconfig python3native python3-dir
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release -DBUILD_EXAMPLES:String=False -DENABLE_TESTS:String=False -DREPOSITORY_LOC:PATH=/etc/sysrepo  -DCALL_TARGET_BINS_DIRECTLY=False -DGEN_LANGUAGE_BINDINGS:String=False"
+EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release -DBUILD_EXAMPLES:String=False -DENABLE_TESTS:String=False -DREPOSITORY_LOC:PATH=/etc/sysrepo  -DCALL_TARGET_BINS_DIRECTLY=True -DGEN_LANGUAGE_BINDINGS:String=False -DSYSREPO_UMASK=00007 -DSYSTEMD_UNIT_DIR=/usr/lib/systemd/system -DNACM_RECOVERY_USER=root -DNACM_SRMON_DATA_PERM=000"
 
 BBCLASSEXTEND = "native nativesdk" 
 
 do_install:append () {
     install -d ${D}/etc/sysrepo/data/notifications
     install -d ${D}/etc/sysrepo/yang
-    install -d ${D}/etc/init.d
-    install -m 0775 ${WORKDIR}/sysrepo ${D}/etc/init.d/
+#    install -m 0775 ${WORKDIR}/sysrepo ${D}/etc/init.d/
     install -d ${D}/usr/lib/sysrepo/plugins
 }
 
