@@ -7,8 +7,8 @@ SRC_URI = "gitsm://github.com/telekom/sysrepo-plugins-common.git;protocol=https;
 SRC_URI += " file://0001-so-version.patch "
 FILESEXTRAPATHS:prepend := "${THISDIR}:"
 
-PV = "dev+git${SRCPV}"
-SRCREV = "6f98eaef59d4d197c2401b133e9b55105e382246"
+PV = "dev+git"
+SRCREV = "20885de0d3bb95a05610fdb3a0f83d8f7c370fad"
 
 S = "${WORKDIR}/git"
 
@@ -24,4 +24,3 @@ EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr "
 do_install:append () {
     true
 }
-
