@@ -22,3 +22,9 @@ inherit cmake pkgconfig
 EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release "
 
 BBCLASSEXTEND = "native nativesdk"
+
+do_install:append () {
+    install -d ${D}${sysconfdir}/sysrepo/yang
+    install -o root -g root ${S}/modules/ietf-keystore@2023-12-28 ${D}${sysconfdir}/sysrepo/yang/ietf-keystore@2023-12-28
+    install -o root -g root ${S}/modules/ietf-netconf-server@2023-12-28 ${D}${sysconfdir}/sysrepo/yang/ietf-netconf-server@2023-12-28
+}
