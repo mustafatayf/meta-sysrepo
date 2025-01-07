@@ -34,6 +34,7 @@ SYSTEMD_AUTO_ENABLE:${PN} = "disable"
 
 do_install:append () {
     install -d ${D}${sysconfdir}/netopeer2/scripts
+    install -o root -g root ${S}/scripts/common.sh ${D}${sysconfdir}/netopeer2/scripts/common.sh
     install -o root -g root ${S}/scripts/setup.sh ${D}${sysconfdir}/netopeer2/scripts/setup.sh
     install -o root -g root ${S}/scripts/merge_hostkey.sh ${D}${sysconfdir}/netopeer2/scripts/merge_hostkey.sh
     install -o root -g root ${S}/scripts/merge_config.sh ${D}${sysconfdir}/netopeer2/scripts/merge_config.sh
