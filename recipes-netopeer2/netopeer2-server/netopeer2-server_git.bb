@@ -20,7 +20,7 @@ S = "${WORKDIR}/git"
 DEPENDS = "libyang libnetconf2 sysrepo curl"
 RDEPENDS:${PN} += "bash curl"
 
-FILES:${PN} += "${datadir}/yang* ${datadir}/netopeer2/* ${libdir}/sysrepo-plugind/*"
+FILES:${PN} += "${datadir}/yang* ${datadir}/netopeer2/* ${libdir}/sysrepo-plugind/* /lib/systemd/system/*"
 #FILES:${PN} += "/usr/share/yang* /usr/share/netopeer2/* /usr/lib/sysrepo-plugind/*"
 
 inherit cmake pkgconfig
