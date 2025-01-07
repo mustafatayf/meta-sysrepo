@@ -9,6 +9,7 @@ SERVER_OPTS=" -d -v 1"
 
 init_sysrepo() {
     export NP2_MODULE_DIR="/usr/share/yang/modules/netopeer2"
+    export LN2_MODULE_DIR="/usr/share/yang/modules/libnetconf2"
     export NP2_MODULE_PERMS="600"
     export NP2_MODULE_OWNER="root"
     export NP2_MODULE_GROUP="root"

@@ -25,6 +25,7 @@ RemainAfterExit=true
 Type=oneshot
 
 ExecStartPre=/bin/bash -c 'NP2_MODULE_DIR="/usr/share/yang/modules/netopeer2" \
+			   LN2_MODULE_DIR="/usr/share/yang/modules/libnetconf2" \
 			   NP2_MODULE_PERMS="600" NP2_MODULE_OWNER="root" \
 			   NP2_MODULE_GROUP="root" \
 			   exec /etc/netopeer2/scripts/setup.sh'

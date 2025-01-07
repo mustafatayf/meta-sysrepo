@@ -41,9 +41,6 @@ RDEPENDS:${PN} += "tar"
 do_install:append () {
     install -d ${D}${sysconfdir}/sysrepo/data/notifications
     install -d ${D}${sysconfdir}/sysrepo/yang
-#    install -o root -g root ${S}/modules/ietf-netconf-notifications.yang ${D}${sysconfdir}/sysrepo/yang/ietf-netconf-notifications@2012-02-06.yang
-#    install -o root -g root ${S}/modules/ietf-netconf-with-defaults.yang ${D}${sysconfdir}/sysrepo/yang/ietf-netconf-with-defaults@2011-06-01.yang
-#    install -o root -g root ${S}/modules/ietf-netconf.yang ${D}${sysconfdir}/sysrepo/yang/ietf-netconf@2011-06-01.yang
     install -d ${D}${sysconfdir}/init.d
 #    if ${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit', 'true', 'false', d)}; then
 #        install -m 0775 ${WORKDIR}/sysrepo ${D}${sysconfdir}/init.d/
