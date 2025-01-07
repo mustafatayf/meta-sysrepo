@@ -20,7 +20,7 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "libyang protobuf protobuf-c protobuf-c-native libredblack libev libnetconf2"
 
-FILES:${PN} += "${datadir}/yang/* ${libdir}/sysrepo-plugind/*"
+FILES:${PN} += "${datadir}/yang/* ${libdir}/sysrepo-plugind/* /lib/systemd/system/*"
 
 
 inherit cmake pkgconfig python3native python3-dir
