@@ -23,8 +23,8 @@ EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Rel
 
 BBCLASSEXTEND = "native nativesdk"
 
-do_install:append () {
-    install -d ${D}${sysconfdir}/sysrepo/yang
-    install -o root -g root ${S}/modules/ietf-keystore@2023-12-28.yang ${D}${sysconfdir}/sysrepo/yang/ietf-keystore@2023-12-28.yang
-    install -o root -g root ${S}/modules/ietf-netconf-server@2023-12-28.yang ${D}${sysconfdir}/sysrepo/yang/ietf-netconf-server@2023-12-28.yang
-}
+#do_install:append () {
+#    install -d ${D}${sysconfdir}/sysrepo/yang
+#    install -o root -g root ${S}/modules/ietf-keystore@2023-12-28.yang ${D}${sysconfdir}/sysrepo/yang/ietf-keystore@2023-12-28.yang
+#    install -o root -g root ${S}/modules/ietf-netconf-server@2023-12-28.yang ${D}${sysconfdir}/sysrepo/yang/ietf-netconf-server@2023-12-28.yang
+#}
