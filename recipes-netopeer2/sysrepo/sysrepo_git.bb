@@ -34,7 +34,7 @@ BBCLASSEXTEND = "native nativesdk"
 
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "sysrepod.service"
-SYSTEMD_AUTO_ENABLE:${PN} = "disable"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 RDEPENDS:${PN} += "tar"
 
