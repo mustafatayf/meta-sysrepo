@@ -17,16 +17,16 @@ SRCREV = "854795c654eda518ed6de6c1ebb4e2107fcb2e73"
 
 S = "${WORKDIR}/git"
 
-inherit cmake ptest
+inherit cmake
 
-PACKAGECONFIG ??= "gcrypt ${@bb.utils.contains('PTEST_ENABLED', '1', 'tests', '', d)}"
+PACKAGECONFIG ??= " "
 PACKAGECONFIG[gssapi] = "-DWITH_GSSAPI=1, -DWITH_GSSAPI=0, krb5, "
-PACKAGECONFIG[gcrypt] = "-DWITH_GCRYPT=1, -DWITH_GCRYPT=0, libgcrypt, "
 PACKAGECONFIG[tests] = "-DUNIT_TESTING=1, -DUNIT_TESTING=0, cmocka"
 
-ARM_INSTRUCTION_SET:armv5 = "arm"
+#ARM_INSTRUCTION_SET:armv5 = "arm"
 
 EXTRA_OECMAKE = " \
+	-DWITH_GCRYPT=0 \
     -DWITH_PCAP=1 \
     -DWITH_SFTP=1 \
     -DWITH_ZLIB=1 \
