@@ -6,8 +6,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=08a5578c9bab06fb2ae84284630b973f"
 
 SRC_URI = "git://github.com/CESNET/libnetconf2.git;protocol=https;branch=master"
 
-PV = "3.5.1+git"
-SRCREV = "53c97bca3b90a5711b64a54885a09a2bdfa45a66"
+PV = "3.5.5+git"
+SRCREV = "4c7858c9c41f1ac04d2b15c032291e335fc0f5f5"
 
 S = "${WORKDIR}/git"
 

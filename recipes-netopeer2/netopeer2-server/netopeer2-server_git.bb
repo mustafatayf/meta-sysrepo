@@ -12,8 +12,8 @@ SRC_URI = "git://github.com/CESNET/Netopeer2.git;protocol=https;branch=master \
 #          "
 #	       file://netopeer2-serverd.service"
 
-PV = "2.2.31+git"
-SRCREV = "1bd72ec706a798b3b3855401cf50d497b4cda76b"
+PV = "2.2.35+git"
+SRCREV = "6d1cb61ef3ce2274a91dc9cbc51318bcd0b54697"
 
 S = "${WORKDIR}/git"
 

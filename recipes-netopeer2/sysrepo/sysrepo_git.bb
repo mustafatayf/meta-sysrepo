@@ -13,8 +13,8 @@ SRC_URI = "git://github.com/sysrepo/sysrepo.git;protocol=https;branch=master \
 #                'file://sysrepod.service','', d)}"
 #           file://sysrepod.service"
 
-PV = "2.11.7+git"
-SRCREV = "a6f309eb9601b9ef28e95a74655d7e9eac3dcc7a"
+PV = "3.3.10+git"
+SRCREV = "ef93a1253cc97f13671759f6e7790cbf729a5ae9"
 
 S = "${WORKDIR}/git"
 
