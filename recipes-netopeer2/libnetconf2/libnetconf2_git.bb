@@ -15,7 +15,12 @@ DEPENDS = "libssh openssl libyang libxcrypt libpam curl"
 
 FILES:${PN} += "${datadir}/yang/modules/libnetconf2/*"
 
-inherit cmake pkgconfig
+DEPENDS = "libssh openssl libyang libxcrypt libpam curl"
+
+
+FILES:${PN} += "/usr/share/yang/* /usr/lib/*"
+
+inherit cmake pkgconfig clang
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
 #EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_BUILD_TYPE:String=Release -DLIBYANG_INCLUDE_DIR=/usr/include -DLIBYANG_LIBRARY=/usr/lib "
