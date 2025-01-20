@@ -27,7 +27,7 @@ inherit cmake pkgconfig
 #inherit ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'systemd', '', d)}
 
 # Specify any options you want to pass to cmake using EXTRA_OECMAKE:
-EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE:String=Release -DINSTALL_MODULES=OFF -DGENERATE_HOSTKEY=OFF -DMERGE_LISTEN_CONFIG=OFF -DSYSREPOCTL_EXECUTABLE:PATH=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE:PATH=/usr/bin/sysrepocfg -DMODULES_OWNER:STRING=root -DMODULES_GROUP:STRING=root"
+EXTRA_OECMAKE = " -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE:String=Release -DSYSREPOCTL_EXECUTABLE:PATH=/usr/bin/sysrepoctl -DSYSREPOCFG_EXECUTABLE:PATH=/usr/bin/sysrepocfg "
 
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "netopeer2-serverd.service"
